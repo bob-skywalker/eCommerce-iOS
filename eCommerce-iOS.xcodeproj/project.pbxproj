@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C69FBDB2A32B5E0007D4D7A /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C69FBDA2A32B5E0007D4D7A /* CheckoutView.swift */; };
 		5C9725472A32984C00C61182 /* eCommerce_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9725462A32984C00C61182 /* eCommerce_iOSApp.swift */; };
 		5C9725492A32984C00C61182 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9725482A32984C00C61182 /* ContentView.swift */; };
 		5C97254B2A32984E00C61182 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C97254A2A32984E00C61182 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C69FBDA2A32B5E0007D4D7A /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		5C9725432A32984C00C61182 /* eCommerce-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eCommerce-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C9725462A32984C00C61182 /* eCommerce_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eCommerce_iOSApp.swift; sourceTree = "<group>"; };
 		5C9725482A32984C00C61182 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		5CAAE8522A329C7800FAACA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5C69FBDA2A32B5E0007D4D7A /* CheckoutView.swift */,
 				5C9725482A32984C00C61182 /* ContentView.swift */,
 			);
 			path = Views;
@@ -259,6 +262,7 @@
 			files = (
 				5CAAE85A2A32A01A00FAACA6 /* CategoryViewModel.swift in Sources */,
 				5C9725492A32984C00C61182 /* ContentView.swift in Sources */,
+				5C69FBDB2A32B5E0007D4D7A /* CheckoutView.swift in Sources */,
 				5C9725472A32984C00C61182 /* eCommerce_iOSApp.swift in Sources */,
 				5CAAE8582A329FCB00FAACA6 /* Category.swift in Sources */,
 			);
