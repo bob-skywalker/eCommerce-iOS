@@ -34,6 +34,12 @@ class CartItemViewModel: ObservableObject {
         }
     }
     
+    func updateQuantity(for itemId: Int, size: String, quantity: Int) {
+        if let index = items.firstIndex(where: { $0.item.id == itemId && $0.size == size}) {
+            items[index].quantity = quantity
+        }
+    }
+    
     var totalCost: Int {
         return items.reduce(0) { $0 + $1.item.price * $1.quantity}
     }

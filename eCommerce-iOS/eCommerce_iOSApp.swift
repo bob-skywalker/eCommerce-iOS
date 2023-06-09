@@ -19,6 +19,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct eCommerce_iOSApp: App {
+    @StateObject var cartItemViewModel = CartItemViewModel()
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
@@ -26,6 +27,7 @@ struct eCommerce_iOSApp: App {
         WindowGroup {
             NavigationView {
                 ContentView()
+                    .environmentObject(cartItemViewModel)
             }
         }
     }

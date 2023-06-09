@@ -10,7 +10,7 @@ import Kingfisher
 
 
 struct ItemView: View {
-    @StateObject var cartItemViewModel = CartItemViewModel()
+    @EnvironmentObject var cartItemViewModel: CartItemViewModel
     @Environment(\.dismiss) var dismiss
     @State private var showingSizeGuide = false
     
@@ -57,7 +57,8 @@ struct ItemView: View {
                                     SizeGuideView()
                                 } label: {
                                     Text("Size Guide")
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.blue).bold()
+
                                 }
 
                             }
