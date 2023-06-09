@@ -17,7 +17,6 @@ class CategoryViewModel: ObservableObject{
     func fetchCategories(){
         let categories = ["hats", "jackets", "mens", "sneakers", "womens"]
         
-        var categoryStructs: [Category] = []
         
         for categoryName in categories {
             db.collection("categories").document(categoryName).getDocument { (document, error) in
