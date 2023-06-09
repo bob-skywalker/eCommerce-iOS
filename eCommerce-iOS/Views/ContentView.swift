@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ContentView: View {
     @StateObject var viewModel = CategoryViewModel()
@@ -28,18 +29,13 @@ struct ContentView: View {
                                                     ItemView(item: item)
                                                 } label: {
                                                     VStack{
-                                                        AsyncImage(url: URL(string: item.imageUrl)) { image in
-                                                            image
-                                                                .resizable()
-                                                                .scaledToFill()
-                                                                .frame(maxWidth: geo.size.width * 0.50)
-                                                                .clipShape(RoundedRectangle(cornerRadius: 15))
-                                                                .shadow(color: .gray, radius: 10, x: 0, y: 10)
-                                                                .padding()
-                                                            
-                                                        } placeholder: {
-                                                            ProgressView()
-                                                        }
+                                                        KFImage(URL(string: item.imageUrl))
+                                                            .resizable()
+                                                            .scaledToFill()
+                                                            .frame(maxWidth: geo.size.width * 0.50)
+                                                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                                                            .shadow(color: .gray, radius: 10, x: 0, y: 10)
+                                                            .padding()
                                                         VStack(spacing: 10){
                                                             Text(item.name.capitalized)
                                                                 .foregroundColor(.black)
@@ -68,9 +64,7 @@ struct ContentView: View {
                                     
                                 }
                             })
-                            .onAppear(perform: viewModel.fetchCategories)
                         }
-                    
                     .navigationTitle("eCommerce")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
@@ -87,6 +81,7 @@ struct ContentView: View {
                     }
 
             }
+                .onAppear(perform: viewModel.fetchCategories)
                 .navigationViewStyle(StackNavigationViewStyle())
         }
     }

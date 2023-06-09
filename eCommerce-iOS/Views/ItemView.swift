@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 
 struct ItemView: View {
     @StateObject var cartItemViewModel = CartItemViewModel()
     @Environment(\.dismiss) var dismiss
+    @State private var showingSizeGuide = false
     
     var item: Item
     let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -41,22 +43,23 @@ struct ItemView: View {
                         .padding()
                         
                         
-                        AsyncImage(url: URL(string: item.imageUrl)) { image in
-                            image
+                        KFImage(URL(string: item.imageUrl))
                                 .resizable()
                                 .scaledToFit()
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                            
-                        } placeholder: {
-                            ProgressView()
-                        }
+
                         
                         VStack(spacing: 23){
                             HStack{
                                 Text("Select Size")
                                 Spacer()
-                                Text("Size Guide")
-                                    .foregroundColor(.gray)
+                                NavigationLink {
+                                    SizeGuideView()
+                                } label: {
+                                    Text("Size Guide")
+                                        .foregroundColor(.gray)
+                                }
+
                             }
                             .padding()
                             
@@ -128,7 +131,6 @@ struct ItemView: View {
                 }
             }
             .navigationBarBackButtonHidden(true)
-
             .navigationViewStyle(StackNavigationViewStyle())
 
         }
