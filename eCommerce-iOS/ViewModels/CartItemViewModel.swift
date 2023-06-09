@@ -8,19 +8,13 @@
 import Foundation
 
 class CartItemViewModel: ObservableObject {
-    @Published var items = [CartItem](){
-        didSet{
-            items.forEach { item in
-                print(item)
-            }
-        }
-    }
+    @Published var items = [CartItem]()
     
     func add(item: Item, size: String) {
         if let index = items.firstIndex(where: { $0.item.id == item.id && $0.size == size}) {
             items[index].quantity += 1
         } else {
-            items.append(CartItem(item: item, quantity: 1, size: size))
+            items.insert(CartItem(item: item, quantity: 1, size: size), at: 0)
         }
     }
     

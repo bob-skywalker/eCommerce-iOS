@@ -15,46 +15,55 @@ struct CheckoutView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView(.vertical){
-                ForEach(cartItemViewModel.items, id: \.item.id) { item in
-                    HStack{
-                        KFImage(URL(string: item.item.imageUrl))
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 150, height: 150)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
-                        Spacer()
-                        
-                        VStack(alignment: .trailing, spacing: 10){
-                            Text(item.item.name)
-                                .font(Font.title2)
-                            Text("Size: \(item.size)")
-                                .font(Font.callout)
-                            Text("$\(item.item.price)")
-                                .font(Font.title3)
-                           
-                            Button {
-                                withAnimation {
-                                    cartItemViewModel.remove(item: item.item, size: item.size)
+            VStack{
+                ScrollView(.vertical){
+                    ForEach(cartItemViewModel.items) { item in
+                        HStack{
+                            KFImage(URL(string: item.item.imageUrl))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 150, height: 150)
+                                .clipShape(RoundedRectangle(cornerRadius: 30))
+                            Spacer()
+                            
+                            VStack(alignment: .trailing, spacing: 10){
+                                Text(item.item.name)
+                                    .font(Font.title2)
+                                Text("Size: \(item.size)")
+                                    .font(Font.callout)
+                                Text("$\(item.item.price)")
+                                    .font(Font.title3)
+                                Text("Quantity: \(item.quantity)")
+                                
+                                Button {
+                                    withAnimation {
+                                        cartItemViewModel.remove(item: item.item, size: item.size)
+                                    }
+                                } label: {
+                                    Text("Remove Item")
+                                        .foregroundColor(.white)
+                                        .padding(.vertical, 10)
+                                        .padding(.horizontal, 15)
+                                        .background(.red)
+                                        .cornerRadius(15)
                                 }
-                            } label: {
-                                Text("Remove Item")
-                                    .foregroundColor(.white)
-                                    .padding(.vertical, 10)
-                                    .padding(.horizontal, 15)
-                                    .background(.red)
-                                    .cornerRadius(15)
+                                
                             }
-
+                            .padding()
                         }
-                        .padding()
                     }
                 }
+                HStack(spacing: 20){
+                    Text("Total Amount: ").font(.title)
+                    Text("$\(cartItemViewModel.totalCost)").bold().font(.title)
+                }
             }
+            
             .navigationTitle("Checkout")
+            }
         }
-    }
 }
+
 
 struct CheckoutView_Previews: PreviewProvider {
     
