@@ -10,4 +10,5 @@ import Foundation
 struct CartItem {
     let item: Item
     var quantity: Int
+    var size: String 
 }

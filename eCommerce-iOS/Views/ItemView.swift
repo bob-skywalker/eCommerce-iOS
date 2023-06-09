@@ -9,6 +9,9 @@ import SwiftUI
 
 
 struct ItemView: View {
+    @StateObject var cartItemViewModel = CartItemViewModel()
+    @Environment(\.dismiss) var dismiss
+    
     var item: Item
     let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
@@ -28,15 +31,14 @@ struct ItemView: View {
         GeometryReader { geo in
             NavigationView {
                 ScrollView{
-                    VStack(alignment: .leading){
-                        VStack(alignment: .leading, spacing: 12){
+                    VStack(alignment: .center){
+                        VStack(alignment: .center, spacing: 12){
                             Text("Sustainable Materials")
                                 .foregroundColor(.orange).bold()
-                            Text(item.name)
-                                .bold()
                             Text("$\(item.price)")
                                 .foregroundColor(Color.gray)
                         }
+                        .padding()
                         
                         
                         AsyncImage(url: URL(string: item.imageUrl)) { image in
@@ -80,6 +82,20 @@ struct ItemView: View {
                                 }
                             }
                             Text("4 interest-free payments of $\(String(format: "%.2f", divideByFoudPrice)) with ") + Text("Klama ").bold() + Text("Learn More").underline()
+                            
+                            Button {
+                                cartItemViewModel.add(item: item, size: selectedSize)
+                            } label: {
+                                Text("Add to Cart")
+                                    .bold()
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                            }
+                            .padding()
+                            .background(.black)
+                            .foregroundColor(.white)
+                            .cornerRadius(25)
+
+                            
                             Text(text)
                         }
                         .padding()
@@ -88,7 +104,33 @@ struct ItemView: View {
                     }
                     
                 }
+                .navigationTitle(item.name)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: CheckoutView()) {
+                            Image(systemName: "cart.fill")
+                                .foregroundColor(Color.brown)
+
+                        }
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "arrow.backward")
+                        }
+
+
+                    }
+                }
             }
+            .navigationBarBackButtonHidden(true)
+
+            .navigationViewStyle(StackNavigationViewStyle())
+
         }
     }
 }

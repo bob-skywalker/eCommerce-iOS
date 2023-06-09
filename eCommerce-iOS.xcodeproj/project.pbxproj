@@ -103,7 +103,6 @@
 		5C97253A2A32984C00C61182 = {
 			isa = PBXGroup;
 			children = (
-				5C6A573E2A32C12800A7AC11 /* CartItemViewModel.swift */,
 				5C9725452A32984C00C61182 /* eCommerce-iOS */,
 				5C9725442A32984C00C61182 /* Products */,
 			);
@@ -152,6 +151,7 @@
 		5CAAE8532A329C7C00FAACA6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5C6A573E2A32C12800A7AC11 /* CartItemViewModel.swift */,
 				5CAAE8592A32A01A00FAACA6 /* CategoryViewModel.swift */,
 			);
 			path = ViewModels;

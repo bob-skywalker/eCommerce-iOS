@@ -18,7 +18,7 @@ struct ContentView: View {
     var body: some View {
             GeometryReader { geo in
                 NavigationView {
-                        ScrollView(.vertical){
+                    ScrollView(.vertical){
                             LazyVGrid(columns: columns, spacing: 20, content: {
                                 ForEach(viewModel.categories, id: \.name) { category in
                                     Section {
@@ -85,9 +85,9 @@ struct ContentView: View {
                             }
                         }
                     }
+
             }
                 .navigationViewStyle(StackNavigationViewStyle())
-
         }
     }
 }
