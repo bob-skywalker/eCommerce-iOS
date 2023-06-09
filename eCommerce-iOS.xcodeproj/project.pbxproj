@@ -10,6 +10,7 @@
 		5C69FBDB2A32B5E0007D4D7A /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C69FBDA2A32B5E0007D4D7A /* CheckoutView.swift */; };
 		5C6A573D2A32C08600A7AC11 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A573C2A32C08600A7AC11 /* CartItem.swift */; };
 		5C6A573F2A32C12800A7AC11 /* CartItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A573E2A32C12800A7AC11 /* CartItemViewModel.swift */; };
+		5C6A57412A32E66C00A7AC11 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A57402A32E66C00A7AC11 /* ItemView.swift */; };
 		5C9725472A32984C00C61182 /* eCommerce_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9725462A32984C00C61182 /* eCommerce_iOSApp.swift */; };
 		5C9725492A32984C00C61182 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9725482A32984C00C61182 /* ContentView.swift */; };
 		5C97254B2A32984E00C61182 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C97254A2A32984E00C61182 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		5C69FBDA2A32B5E0007D4D7A /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		5C6A573C2A32C08600A7AC11 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		5C6A573E2A32C12800A7AC11 /* CartItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemViewModel.swift; sourceTree = "<group>"; };
+		5C6A57402A32E66C00A7AC11 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		5C9725432A32984C00C61182 /* eCommerce-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eCommerce-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C9725462A32984C00C61182 /* eCommerce_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eCommerce_iOSApp.swift; sourceTree = "<group>"; };
 		5C9725482A32984C00C61182 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				5C69FBDA2A32B5E0007D4D7A /* CheckoutView.swift */,
 				5C9725482A32984C00C61182 /* ContentView.swift */,
+				5C6A57402A32E66C00A7AC11 /* ItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				5CAAE85A2A32A01A00FAACA6 /* CategoryViewModel.swift in Sources */,
 				5C6A573F2A32C12800A7AC11 /* CartItemViewModel.swift in Sources */,
 				5C9725492A32984C00C61182 /* ContentView.swift in Sources */,
+				5C6A57412A32E66C00A7AC11 /* ItemView.swift in Sources */,
 				5C69FBDB2A32B5E0007D4D7A /* CheckoutView.swift in Sources */,
 				5C9725472A32984C00C61182 /* eCommerce_iOSApp.swift in Sources */,
 				5C6A573D2A32C08600A7AC11 /* CartItem.swift in Sources */,

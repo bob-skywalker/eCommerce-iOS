@@ -24,29 +24,38 @@ struct ContentView: View {
                                     Section {
                                         ForEach(category.items, id: \.id) { item in
                                             VStack{
-                                                AsyncImage(url: URL(string: item.imageUrl)) { image in
-                                                    image
-                                                        .resizable()
-                                                        .scaledToFill()
-                                                        .frame(maxWidth: geo.size.width * 0.50)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 15))
-                                                        .shadow(color: .gray, radius: 10, x: 0, y: 10)
-                                                        .padding()
-                                                    
-                                                } placeholder: {
-                                                    ProgressView()
+                                                NavigationLink {
+                                                    ItemView(item: item)
+                                                } label: {
+                                                    VStack{
+                                                        AsyncImage(url: URL(string: item.imageUrl)) { image in
+                                                            image
+                                                                .resizable()
+                                                                .scaledToFill()
+                                                                .frame(maxWidth: geo.size.width * 0.50)
+                                                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                                                .shadow(color: .gray, radius: 10, x: 0, y: 10)
+                                                                .padding()
+                                                            
+                                                        } placeholder: {
+                                                            ProgressView()
+                                                        }
+                                                        VStack(spacing: 10){
+                                                            Text(item.name.capitalized)
+                                                                .foregroundColor(.black)
+                                                                .font(SwiftUI.Font.footnote)
+                                                                .lineLimit(1)
+                                                                .padding(7)
+                                                                .background(Color.gray.opacity(0.2))
+                                                                .cornerRadius(3)
+                                                            Text("$\(item.price)")
+                                                                .foregroundColor(.black).bold()
+                                                        }
+                                                        .padding(.bottom, 10)
+                                                        
+                                                    }
                                                 }
-                                                VStack(spacing: 10){
-                                                    Text(item.name.capitalized)
-                                                        .font(SwiftUI.Font.footnote)
-                                                        .lineLimit(1)
-                                                        .padding(7)
-                                                        .background(Color.gray.opacity(0.2))
-                                                        .cornerRadius(3)
-                                                    Text("$\(item.price)")
-                                                        .foregroundColor(.black).bold()
-                                                }
-                                                .padding(.bottom, 10)
+                                                
                                             }
                                         }
                                     } header: {
@@ -62,12 +71,8 @@ struct ContentView: View {
                             .onAppear(perform: viewModel.fetchCategories)
                         }
                     
-                    
                     .navigationTitle("eCommerce")
                     .navigationBarTitleDisplayMode(.inline)
-                    .sheet(isPresented: $showCheckout) {
-                        CheckoutView()
-                    }
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing){
                             NavigationLink {
@@ -78,7 +83,6 @@ struct ContentView: View {
                                     .frame(width:24, height: 24)
                                     .foregroundColor(Color.brown)
                             }
-
                         }
                     }
             }
