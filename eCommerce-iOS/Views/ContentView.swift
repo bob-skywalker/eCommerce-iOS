@@ -7,15 +7,61 @@
 
 import SwiftUI
 
-struct ContentView: View { 
+struct ContentView: View {
+    @StateObject var viewModel = CategoryViewModel()
+    let columns = [
+        GridItem(.adaptive(minimum: 140))
+    ]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            GeometryReader { geo in
+                ScrollView(.vertical){
+                    LazyVGrid(columns: columns, spacing: 20, content: {
+                        ForEach(viewModel.categories, id: \.name) { category in
+                            Section {
+                                ForEach(category.items, id: \.id) { item in
+                                    VStack{
+                                        AsyncImage(url: URL(string: item.imageUrl)) { image in
+                                            image
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(maxWidth: geo.size.width * 0.50)
+                                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                                .shadow(color: .gray, radius: 10, x: 0, y: 10)
+                                                .padding()
+                                            
+                                        } placeholder: {
+                                            ProgressView()
+                                        }
+                                        VStack(spacing: 10){
+                                            Text(item.name.capitalized)
+                                                .font(SwiftUI.Font.footnote)
+                                                .lineLimit(1)
+                                                .padding(5)
+                                                .background(Color.gray.opacity(0.2))
+                                                .cornerRadius(3)
+                                            Text("$\(item.price)")
+                                                .foregroundColor(.black).bold()
+                                        }
+                                        .padding(.bottom, 10)
+                                    }
+                                }
+                            } header: {
+                                Text(category.name.capitalized)
+                                    .font(.largeTitle)
+                                    .foregroundColor(.gray)
+                                    .bold()
+                                    .padding(.top)
+                            }
+                            
+                        }
+                    })
+                    .onAppear(perform: viewModel.fetchCategories)
+                }
+                
+            }
         }
-        .padding()
     }
 }
 

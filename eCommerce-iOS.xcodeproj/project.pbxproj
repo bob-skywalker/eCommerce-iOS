@@ -38,6 +38,8 @@
 		5C9725862A32990900C61182 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9725852A32990900C61182 /* FirebaseRemoteConfigSwift */; };
 		5C9725882A32990900C61182 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9725872A32990900C61182 /* FirebaseStorage */; };
 		5C97258A2A32990900C61182 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9725892A32990900C61182 /* FirebaseStorageCombine-Community */; };
+		5CAAE8582A329FCB00FAACA6 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAAE8572A329FCB00FAACA6 /* Category.swift */; };
+		5CAAE85A2A32A01A00FAACA6 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAAE8592A32A01A00FAACA6 /* CategoryViewModel.swift */; };
 		5CC84D952A329AB200696B27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CC84D942A329AB200696B27 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		5C9725482A32984C00C61182 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C97254A2A32984E00C61182 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C97254D2A32984E00C61182 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5CAAE8572A329FCB00FAACA6 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		5CAAE8592A32A01A00FAACA6 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		5CC84D942A329AB200696B27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Volumes/External SSD/Chrome Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +141,7 @@
 		5CAAE8532A329C7C00FAACA6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5CAAE8592A32A01A00FAACA6 /* CategoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 		5CAAE8542A329C8200FAACA6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5CAAE8572A329FCB00FAACA6 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,8 +257,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CAAE85A2A32A01A00FAACA6 /* CategoryViewModel.swift in Sources */,
 				5C9725492A32984C00C61182 /* ContentView.swift in Sources */,
 				5C9725472A32984C00C61182 /* eCommerce_iOSApp.swift in Sources */,
+				5CAAE8582A329FCB00FAACA6 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
