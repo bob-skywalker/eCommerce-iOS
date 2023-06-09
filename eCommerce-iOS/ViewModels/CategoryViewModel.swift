@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 import Firebase
 
-class CategoryViewModel: ObservableObject {
+class CategoryViewModel: ObservableObject{
+
     @Published var categories = [Category]()
     let db = Firestore.firestore()
 
