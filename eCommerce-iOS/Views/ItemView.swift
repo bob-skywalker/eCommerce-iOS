@@ -12,7 +12,7 @@ import Kingfisher
 struct ItemView: View {
     @EnvironmentObject var cartItemViewModel: CartItemViewModel
     @Environment(\.dismiss) var dismiss
-    @State private var showingSizeGuide = false
+    @State private var showingLearnMore = false
     
     var item: Item
     let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -85,7 +85,15 @@ struct ItemView: View {
                                     
                                 }
                             }
-                            Text("4 interest-free payments of $\(String(format: "%.2f", divideByFoudPrice)) with ") + Text("Klama ").bold() + Text("Learn More").underline()
+                            HStack{
+                                Text("4 interest-free payments of $\(String(format: "%.2f", divideByFoudPrice)) with ") +
+                                Text("Klama ").bold() +
+                                Text("Learn More").underline().foregroundColor(.blue)
+                            }
+                            .onTapGesture{
+                                showingLearnMore = true
+                            }
+                                
                             
                             Button {
                                 cartItemViewModel.add(item: item, size: selectedSize)
@@ -110,6 +118,14 @@ struct ItemView: View {
                     }
                     
                 }
+                .sheet(isPresented: $showingLearnMore, content: {
+                    VStack{
+                        Image("klama")
+                            .resizable()
+                            .scaledToFill()
+                            .ignoresSafeArea()
+                    }
+                })
                 .navigationTitle(item.name)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -162,5 +178,6 @@ struct ItemView_Previews: PreviewProvider {
 
     static var previews: some View {
         ItemView(item: Item(id: 1, imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png", name: "Brown Brim", price: 25))
+            .environmentObject(CartItemViewModel())
     }
 }
