@@ -67,6 +67,8 @@ struct ItemView: View {
                             LazyVGrid(columns: columns) {
                                 ForEach(sizes, id: \.self) { size in
                                     Button {
+                                        let impactMed = UIImpactFeedbackGenerator(style: .light)
+                                        impactMed.impactOccurred()
                                         self.selectedSize = size
                                     } label: {
                                         Text(size)

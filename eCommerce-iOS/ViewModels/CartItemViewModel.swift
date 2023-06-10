@@ -28,9 +28,19 @@ class CartItemViewModel: ObservableObject {
         }
     }
     
-    func updateQuantity(for itemId: Int, size: String, quantity: Int) {
-        if let index = items.firstIndex(where: { $0.item.id == itemId && $0.size == size}) {
+    func updateQuantity(for itemId: UUID, size: String, quantity: Int) {
+        if let index = items.firstIndex(where: { $0.id == itemId && $0.size == size}) {
             items[index].quantity = quantity
+        }
+    }
+    
+    func setQuantity(for itemId: UUID, to newQuantity: Int){
+        if let index = items.firstIndex(where: {$0.id == itemId}) {
+            if newQuantity == 0 {
+                items.remove(at: index)
+            } else {
+                items[index].quantity = newQuantity
+            }
         }
     }
     

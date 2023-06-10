@@ -12,7 +12,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     FirebaseApp.configure()
-
     return true
   }
 }
@@ -27,6 +26,7 @@ struct eCommerce_iOSApp: App {
         WindowGroup {
             NavigationView {
                 ContentView()
+                    .preferredColorScheme(.light)
                     .environmentObject(cartItemViewModel)
             }
         }

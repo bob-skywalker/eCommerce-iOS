@@ -10,6 +10,7 @@
 		5C1950DB2A3399F20071DA20 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1950DA2A3399F20071DA20 /* Kingfisher */; };
 		5C1950DD2A339D240071DA20 /* SizeGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1950DC2A339D240071DA20 /* SizeGuideView.swift */; };
 		5C29EE7F2A33EBCD00217C4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C29EE7E2A33EBCD00217C4C /* GoogleService-Info.plist */; };
+		5C29EE832A341D5200217C4C /* ApplePayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C29EE822A341D5200217C4C /* ApplePayView.swift */; };
 		5C69FBDB2A32B5E0007D4D7A /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C69FBDA2A32B5E0007D4D7A /* CheckoutView.swift */; };
 		5C6A573D2A32C08600A7AC11 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A573C2A32C08600A7AC11 /* CartItem.swift */; };
 		5C6A573F2A32C12800A7AC11 /* CartItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A573E2A32C12800A7AC11 /* CartItemViewModel.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		5C1950DC2A339D240071DA20 /* SizeGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeGuideView.swift; sourceTree = "<group>"; };
 		5C29EE7E2A33EBCD00217C4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5C29EE822A341D5200217C4C /* ApplePayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplePayView.swift; path = ../../ApplePayView.swift; sourceTree = "<group>"; };
 		5C69FBDA2A32B5E0007D4D7A /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		5C6A573C2A32C08600A7AC11 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		5C6A573E2A32C12800A7AC11 /* CartItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemViewModel.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		5CAAE8522A329C7800FAACA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5C29EE822A341D5200217C4C /* ApplePayView.swift */,
 				5C69FBDA2A32B5E0007D4D7A /* CheckoutView.swift */,
 				5C9725482A32984C00C61182 /* ContentView.swift */,
 				5C6A57402A32E66C00A7AC11 /* ItemView.swift */,
@@ -284,6 +287,7 @@
 				5C1950DD2A339D240071DA20 /* SizeGuideView.swift in Sources */,
 				5C9725472A32984C00C61182 /* eCommerce_iOSApp.swift in Sources */,
 				5C6A573D2A32C08600A7AC11 /* CartItem.swift in Sources */,
+				5C29EE832A341D5200217C4C /* ApplePayView.swift in Sources */,
 				5CAAE8582A329FCB00FAACA6 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

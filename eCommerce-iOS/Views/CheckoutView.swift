@@ -10,6 +10,8 @@ import Kingfisher
 
 struct CheckoutView: View {
     @EnvironmentObject var cartItemViewModel: CartItemViewModel
+    @State private var showingApplePay = false
+    @State private var animate = false
     
     let quantities = Array(1...10)
     
@@ -22,51 +24,69 @@ struct CheckoutView: View {
                             KFImage(URL(string: item.item.imageUrl))
                                 .resizable()
                                 .scaledToFit()
-                                .clipShape(RoundedRectangle(cornerRadius: 30))
+                                .clipShape(RoundedRectangle(cornerRadius: 35))
                                 .frame(width: 150, height: 150)
                             Spacer()
                             
                             VStack(alignment: .trailing, spacing: 10){
                                 Text(item.item.name)
-                                    .font(Font.title2)
+                                    .font(Font.body.bold())
+                                    .foregroundColor(Color.black)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
                                 Text("Size: \(item.size)")
-                                    .font(Font.callout)
-                                Text("$\(item.item.price)")
-                                    .font(Font.title3)
+                                    .font(Font.body)
+                                    .foregroundColor(Color.gray)
+                                
+                                Text("$\(item.item.price * item.quantity)")
+                                    .font(Font.title3.bold())
+                                    .foregroundColor(Color.black)
+                                
                                 Text("Quantity: \(item.quantity)")
                                 
-                                Button {
+                                
+                                Stepper("", onIncrement: {
                                     let impactMed = UIImpactFeedbackGenerator(style: .light)
                                     impactMed.impactOccurred()
-                                    withAnimation {
-                                        cartItemViewModel.remove(item: item.item, size: item.size)
-                                    }
-                                } label: {
-                                    Text("Remove Item")
-                                        .foregroundColor(.white)
-                                        .padding(.vertical, 10)
-                                        .padding(.horizontal, 15)
-                                        .background(.red)
-                                        .cornerRadius(15)
-                                }
+                                    
+                                    cartItemViewModel.setQuantity(for: item.id, to: item.quantity + 1)
+                                }, onDecrement: {
+                                    let impactMed = UIImpactFeedbackGenerator(style: .light)
+                                    impactMed.impactOccurred()
+                                    cartItemViewModel.setQuantity(for: item.id, to: item.quantity - 1)})
+                                .foregroundColor(.white)
+                                .cornerRadius(15)
+                                
+                                
+                                
                                 
                             }
+                            .padding()
                         }
-                        .padding()
+                        .frame(maxWidth: .infinity)
                     }
                 }
-                HStack(spacing: 20){
-                    Text("Total Amount: ").font(.title)
-                    Text("$\(cartItemViewModel.totalCost)").bold().font(.title)
+                NavigationLink {
+                    ApplePayView()
+                } label: {
+                    HStack(alignment: .center, spacing: 20){
+                        Text("Tap To Pay: ").font(.title).foregroundColor(.white)
+                        Text("$\(cartItemViewModel.totalCost)").bold().font(.title).foregroundColor(.white)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(animate ? LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing) : LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .leading, endPoint: .trailing))
+                    .animation(Animation.linear(duration: 2).repeatForever(autoreverses: true), value: animate)
+                    .onAppear {
+                        self.animate = true
+                    }
                 }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(.gray.opacity(0.23))
+                
             }
             
-            .navigationTitle("Checkout")
-            }
+            //            .navigationTitle("Checkout")
         }
+        //        .navigationBarBackButtonHidden(true)
+    }
 }
 
 
