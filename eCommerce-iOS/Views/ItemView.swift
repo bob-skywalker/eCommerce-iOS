@@ -89,6 +89,8 @@ struct ItemView: View {
                             
                             Button {
                                 cartItemViewModel.add(item: item, size: selectedSize)
+                                let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+                                impactMed.impactOccurred()
                             } label: {
                                 Text("Add to Cart")
                                     .bold()
@@ -115,6 +117,24 @@ struct ItemView: View {
                         NavigationLink(destination: CheckoutView()) {
                             Image(systemName: "cart.fill")
                                 .foregroundColor(Color.brown)
+                                .overlay(
+                                    Group {
+                                                if !cartItemViewModel.items.isEmpty {
+                                                    ZStack {
+                                                        Circle()
+                                                            .fill(Color.red)
+                                                            .frame(width: 20, height: 20)
+                                                            .offset(x:10, y:-10)
+
+                                                        Text("\(cartItemViewModel.items.reduce(0) { $0 + $1.quantity })")
+                                                            .foregroundColor(.white)
+                                                            .font(.system(size: 12))
+                                                            .offset(x:10, y:-10)
+                                                    }
+                                                }
+                                            }
+                                
+                                )
 
                         }
                     }

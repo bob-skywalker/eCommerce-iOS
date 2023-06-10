@@ -22,8 +22,8 @@ struct CheckoutView: View {
                             KFImage(URL(string: item.item.imageUrl))
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 150, height: 150)
                                 .clipShape(RoundedRectangle(cornerRadius: 30))
+                                .frame(width: 150, height: 150)
                             Spacer()
                             
                             VStack(alignment: .trailing, spacing: 10){
@@ -36,6 +36,8 @@ struct CheckoutView: View {
                                 Text("Quantity: \(item.quantity)")
                                 
                                 Button {
+                                    let impactMed = UIImpactFeedbackGenerator(style: .light)
+                                    impactMed.impactOccurred()
                                     withAnimation {
                                         cartItemViewModel.remove(item: item.item, size: item.size)
                                     }
@@ -49,14 +51,17 @@ struct CheckoutView: View {
                                 }
                                 
                             }
-                            .padding()
                         }
+                        .padding()
                     }
                 }
                 HStack(spacing: 20){
                     Text("Total Amount: ").font(.title)
                     Text("$\(cartItemViewModel.totalCost)").bold().font(.title)
                 }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(.gray.opacity(0.23))
             }
             
             .navigationTitle("Checkout")

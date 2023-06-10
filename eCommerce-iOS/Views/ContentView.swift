@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct ContentView: View {
+    @EnvironmentObject var cartItemViewModel: CartItemViewModel
     @StateObject var viewModel = CategoryViewModel()
     @State private var showCheckout = false
     
@@ -76,6 +77,24 @@ struct ContentView: View {
                                     .resizable()
                                     .frame(width:24, height: 24)
                                     .foregroundColor(Color.brown)
+                                    .overlay(
+                                        Group {
+                                                    if !cartItemViewModel.items.isEmpty {
+                                                        ZStack {
+                                                            Circle()
+                                                                .fill(Color.red)
+                                                                .frame(width: 20, height: 20)
+                                                                .offset(x:10, y:-10)
+
+                                                            Text("\(cartItemViewModel.items.reduce(0) { $0 + $1.quantity })")
+                                                                .foregroundColor(.white)
+                                                                .font(.system(size: 12))
+                                                                .offset(x:10, y:-10)
+                                                        }
+                                                    }
+                                                }
+                                    
+                                    )
                             }
                         }
                     }
@@ -90,6 +109,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(CartItemViewModel())
 
     }
 }
