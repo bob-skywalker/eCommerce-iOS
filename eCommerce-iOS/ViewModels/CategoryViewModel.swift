@@ -45,4 +45,17 @@ class CategoryViewModel: ObservableObject{
             }
         }
     }
+    
+    func getRandomItems() -> [Item]{
+        var allItems = [Item]()
+        
+        for category in categories{
+            allItems.append(contentsOf: category.items)
+        }
+        
+        allItems.shuffle()
+        let itemCount = min(allItems.count, 8) // ensure we don't try to access more items than exist
+        let result = Array(allItems[0..<itemCount])
+        return result
+    }
 }

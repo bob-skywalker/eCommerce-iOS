@@ -10,7 +10,7 @@ import Kingfisher
 
 struct ContentView: View {
     @EnvironmentObject var cartItemViewModel: CartItemViewModel
-    @StateObject var viewModel = CategoryViewModel()
+    @EnvironmentObject var categoryViewModel : CategoryViewModel
     @State private var showCheckout = false
     
     let columns = [
@@ -22,7 +22,7 @@ struct ContentView: View {
                 NavigationView {
                     ScrollView(.vertical){
                             LazyVGrid(columns: columns, spacing: 20, content: {
-                                ForEach(viewModel.categories, id: \.name) { category in
+                                ForEach(categoryViewModel.categories, id: \.name) { category in
                                     Section {
                                         ForEach(category.items, id: \.id) { item in
                                             VStack{
@@ -100,7 +100,7 @@ struct ContentView: View {
                     }
 
             }
-                .onAppear(perform: viewModel.fetchCategories)
+                .onAppear(perform: categoryViewModel.fetchCategories)
                 .navigationViewStyle(StackNavigationViewStyle())
         }
     }
@@ -110,6 +110,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(CartItemViewModel())
+            .environmentObject(CategoryViewModel())
 
     }
 }

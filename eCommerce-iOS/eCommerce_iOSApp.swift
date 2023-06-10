@@ -19,6 +19,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct eCommerce_iOSApp: App {
     @StateObject var cartItemViewModel = CartItemViewModel()
+    @StateObject var categoryViewModel = CategoryViewModel()
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
@@ -28,6 +29,7 @@ struct eCommerce_iOSApp: App {
                 ContentView()
                     .preferredColorScheme(.light)
                     .environmentObject(cartItemViewModel)
+                    .environmentObject(categoryViewModel)
             }
         }
     }
