@@ -1,23 +1,21 @@
 //
-//  CheckoutView.swift
+//  OrderConfirmationView.swift
 //  eCommerce-iOS
 //
-//  Created by bo zhong on 6/8/23.
+//  Created by bo zhong on 6/12/23.
 //
 
 import SwiftUI
 import Kingfisher
 
-struct CheckoutView: View {
+struct OrderConfirmationView: View {
     @EnvironmentObject var cartItemViewModel: CartItemViewModel
-    @State private var showingApplePay = false
-    @State private var animate = false
-    @Environment(\.dismiss) var dismiss
+    @State private var showingAlert = true
+    @State private var textMessage = "Your order is successful!"
     
-    let quantities = Array(1...10)
     
     var body: some View {
-        NavigationView {
+        NavigationView{
             VStack{
                 ScrollView(.vertical){
                     ForEach(cartItemViewModel.items) { item in
@@ -44,65 +42,54 @@ struct CheckoutView: View {
                                 
                                 Text("Quantity: \(item.quantity)")
                                 
-                                
-                                Stepper("", onIncrement: {
-                                    let impactMed = UIImpactFeedbackGenerator(style: .light)
-                                    impactMed.impactOccurred()
-                                    
-                                    cartItemViewModel.setQuantity(for: item.id, to: item.quantity + 1)
-                                }, onDecrement: {
-                                    let impactMed = UIImpactFeedbackGenerator(style: .light)
-                                    impactMed.impactOccurred()
-                                    cartItemViewModel.setQuantity(for: item.id, to: item.quantity - 1)})
-                                .foregroundColor(.white)
-                                .cornerRadius(15)
-                                
-                                
-                                
-                                
                             }
                             .padding()
                         }
+                        .padding(.top, 15)
                         .frame(maxWidth: .infinity)
                     }
+                    HStack{
+                        Spacer()
+                        Text("Amount Paid:")
+                        Text("$\(cartItemViewModel.totalCost)")
+                    }
+                    .font(.title2).bold()
+                    .padding(.top, 30)
+                    .padding(.horizontal, 15)
+
                 }
+                
                 NavigationLink {
-                    ApplePayView()
+                    ContentView()
                 } label: {
                     HStack(alignment: .center, spacing: 20){
-                        Text("Tap To Pay: ").font(.title).foregroundColor(.white)
-                        Text("$\(cartItemViewModel.totalCost)").bold().font(.title).foregroundColor(.white)
+                        Text("Continue Shopping")
+                            .font(.title2).bold()
+                            .foregroundColor(.white)
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(animate ? LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing) : LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .leading, endPoint: .trailing))
-                    .animation(Animation.linear(duration: 2).repeatForever(autoreverses: true), value: animate)
-                    .onAppear {
-                        self.animate = true
-                    }
+                    .background(.blue)
                 }
-                
+
             }
-            
-            //            .navigationTitle("Checkout")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "arrow.backward")
-                    }
-                    
-                    
-                }
-            }
+            .alert("Thank You", isPresented: $showingAlert, actions: {
+                Button("OK") {}
+            }, message: {
+                Text(textMessage)
+            })
+            .navigationTitle("Order Confirmation")
+            .onDisappear(perform: emptyCart)
         }
         .navigationBarBackButtonHidden(true)
     }
+    
+    func emptyCart(){
+        cartItemViewModel.items = []
+    }
 }
 
-
-struct CheckoutView_Previews: PreviewProvider {
+struct OrderConfirmationView_Previews: PreviewProvider {
     
     static var previews: some View {
         
@@ -112,7 +99,6 @@ struct CheckoutView_Previews: PreviewProvider {
         cartItemViewModel.add(item: dummyItem, size: "M")
         cartItemViewModel.add(item: dummyItem2, size: "S")
         
-        
-        return CheckoutView().environmentObject(cartItemViewModel)
+        return OrderConfirmationView().environmentObject(cartItemViewModel)
     }
 }

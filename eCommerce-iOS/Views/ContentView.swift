@@ -100,6 +100,7 @@ struct ContentView: View {
                     }
 
             }
+                .navigationBarBackButtonHidden(true)
                 .onAppear(perform: categoryViewModel.fetchCategories)
                 .navigationViewStyle(StackNavigationViewStyle())
         }
