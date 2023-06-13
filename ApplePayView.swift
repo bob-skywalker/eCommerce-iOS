@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ApplePayView: View {
-    @Environment(\.dismiss) var dismiss
+    
     @State private var cardNumber = "123456789"
     @State private var expirationDate = "06/24"
     @State private var cvv = "123"
@@ -37,21 +37,23 @@ struct ApplePayView: View {
                             .cornerRadius(10)
                             .keyboardType(.numberPad)
                     }
-
-                    Button("Confirm Payment") {
-                        print("Confirming Payment...") // Here you would handle the payment confirmation in your actual app
-                        dismiss()
+            
+                    NavigationLink {
+                        OrderConfirmationView()
+                    } label: {
+                        Text("Confirm Payment")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(15)
+
                 }
-                
         .navigationBarBackButtonHidden(true)
-                .padding()
+        .padding()
     }
+    
 }
 
 
