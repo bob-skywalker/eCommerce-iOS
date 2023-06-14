@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ApplePayView: View {
+    @Environment(\.dismiss) var dismiss
     
     @State private var cardNumber = "123456789"
     @State private var expirationDate = "06/24"
@@ -51,6 +52,17 @@ struct ApplePayView: View {
 
                 }
         .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "arrow.backward")
+                }
+                
+                
+            }
+        }
         .padding()
     }
     
