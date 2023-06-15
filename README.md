@@ -35,7 +35,7 @@
 
 # Aplication Preview
 
-## Clime8 Layout
+## eCommerce Layout
 
 ![eCommerce Layout](https://i.postimg.cc/J7d5MRMS/IMG-6929.png)
 
