@@ -37,7 +37,7 @@
 
 ## Clime8 Layout
 
-![Clime8 Layout](https://i.postimg.cc/J7d5MRMS/IMG-6929.png)
+![eCommerce Layout](https://i.postimg.cc/J7d5MRMS/IMG-6929.png)
 
 
 ## Code Snippet
